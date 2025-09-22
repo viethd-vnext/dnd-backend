@@ -1,6 +1,6 @@
 import { Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { UserUpdateDTO } from "src/dto/userUpdate.dto";
+import { UserUpdateDTO } from "src/dto/login.dto";
 import { User } from "src/entities/user.entity";
 import { Repository } from "typeorm";
 
@@ -10,7 +10,7 @@ export default class UpdateUserService {
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,
     ) {}
-    async execute(id: number, patchData:UserUpdateDTO) {
+    async execute(id: string, patchData:UserUpdateDTO) {
         try {
             this.logger.debug(`Finding user with ID ${id}`)
             const exists = await this.userRepository.findOne({where: {id, active:true}})

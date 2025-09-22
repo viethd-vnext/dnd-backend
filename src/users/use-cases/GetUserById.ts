@@ -9,7 +9,7 @@ export default class GetUserByIDService {
         @InjectRepository(User)
         private readonly userRepository: Repository<User>
     ) {}
-    async execute(id: number) {
+    async execute(id: string) {
         try {
             this.logger.debug(`Searching for user with ID ${id}`)
             const result = await this.userRepository.findOne({ where: { id: id, active: true } })

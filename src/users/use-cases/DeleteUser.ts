@@ -9,7 +9,7 @@ export default class DeleteUserService {
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,
     ) {}
-    async execute(id: number) {
+    async execute(id: string) {
         try {
             this.logger.debug(`Finding user with ID ${id}`)
             const exists = await this.userRepository.findOne({where: {id, active:true}})
