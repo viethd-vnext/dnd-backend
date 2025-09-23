@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthService } from 'src/auth/services/auth/auth.service';
 import { MailService } from 'src/auth/services/mail/mail.service';
@@ -12,8 +13,10 @@ import { User } from 'src/entities/user.entity';
 import TokenUtils from 'src/utils/TokenUtils';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([User]), ConfigModule.forRoot({ isGlobal: true }),],
-    
+    imports: [
+        TypeOrmModule.forFeature([User]),
+        ConfigModule.forRoot({ isGlobal: true }),
+    ],
     providers: [
         AuthService,
         MailService,

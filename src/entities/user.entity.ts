@@ -1,8 +1,7 @@
 import * as bcrypt from 'bcryptjs'
 import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate } from 'typeorm';
 import * as crypto from 'crypto'
-import { ConfigService } from '@nestjs/config';
-@Entity()
+@Entity("users")
 export class User {
     constructor(
     ) {}

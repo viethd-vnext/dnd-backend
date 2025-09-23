@@ -8,9 +8,11 @@ import { AuthModule } from './auth/module/auth/auth.module';
 import { AuthController } from './auth/controller/auth/auth.controller';
 import { AuthService } from './auth/services/auth/auth.service';
 import { MailService } from './auth/services/mail/mail.service';
+import { SheetModule } from './sheet/module/sheet/sheet.module';
+import { SheetController } from './sheet/controller/sheet/sheet.controller';
+import { SheetService } from './sheet/services/sheet/sheet.service';
 @Module({
   imports: [
-    UsersModule,
     ConfigModule.forRoot({
       isGlobal: true
     }),
@@ -28,9 +30,11 @@ import { MailService } from './auth/services/mail/mail.service';
       }),
       inject: [ConfigService]
     }),
-    AuthModule
+    UsersModule,
+    AuthModule,
+    SheetModule
   ],
-  controllers: [UsersController, AuthController],
+  controllers: [UsersController, AuthController, SheetController],
   providers: [MailService],
 })
 export class AppModule {}

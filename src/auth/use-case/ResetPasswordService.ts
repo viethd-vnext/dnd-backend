@@ -15,14 +15,17 @@ export default class ResetPasswordService {
         private readonly tokenUtils: TokenUtils
     ) {}
     async execute(token: string, req: Request, res: Response) {
-          const hashedToken = crypto.createHash('sha256').update(token).digest('hex')
+        this.logger.debug("Finding user with reset token")
+        const hashedToken = crypto.createHash('sha256').update(token).digest('hex')
         const user = await this.userRepository.findOne({
             where: {
                 passwordResetToken: hashedToken,
                 passwordResetExpires: MoreThan(new Date())
             }
         })
+        this.logger.debug("Succeed. Saving new password.")
         if (!user) {
+            this.logger.error('Invalid: No user found.')
             return res.status(Number(this.configService.get<number>('STATUS_BAD_REQUEST'))).json({message: "Token is invalid"})
         }
         user.password = req.body.password
