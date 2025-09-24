@@ -5,11 +5,14 @@ import { CharacterAffinity } from 'src/entities/affinity.entity';
 import { CharacterSheet } from 'src/entities/sheet.entity';
 import { User } from 'src/entities/user.entity';
 import { SheetService } from 'src/sheet/services/sheet/sheet.service';
+import AddTempHPService from 'src/sheet/use-cases/AddTempHP';
 import CreateSheetService from 'src/sheet/use-cases/CreateSheet';
 import DamageService from 'src/sheet/use-cases/Damage';
 import DeleteSheetService from 'src/sheet/use-cases/DeleteSheet';
 import GetAllSheetService from 'src/sheet/use-cases/GetAllSheet';
+import GetOwnedSheetService from 'src/sheet/use-cases/GetOwnedSheets';
 import GetSheetByIDService from 'src/sheet/use-cases/GetSheetByID';
+import HealService from 'src/sheet/use-cases/Heal';
 import ModifySheetService from 'src/sheet/use-cases/ModifySheet';
 
 @Module({
@@ -21,7 +24,10 @@ import ModifySheetService from 'src/sheet/use-cases/ModifySheet';
         DeleteSheetService,
         GetAllSheetService,
         GetSheetByIDService,
-        DamageService
+        DamageService,
+        GetOwnedSheetService,
+        HealService,
+        AddTempHPService
     ],
     exports: [SheetService],
 })

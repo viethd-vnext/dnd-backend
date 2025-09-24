@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthGuard } from 'src/auth/guard/auth/auth.guard';
 import { AuthService } from 'src/auth/services/auth/auth.service';
 import { MailService } from 'src/auth/services/mail/mail.service';
 import ForgotPasswordUserService from 'src/auth/use-case/ForgotPassword';
@@ -18,6 +19,7 @@ import TokenUtils from 'src/utils/TokenUtils';
         ConfigModule.forRoot({ isGlobal: true }),
     ],
     providers: [
+        AuthGuard,
         AuthService,
         MailService,
         RegisterUserService,
@@ -27,6 +29,6 @@ import TokenUtils from 'src/utils/TokenUtils';
         ResetPasswordService,
         TokenUtils,
     ],
-    exports: [AuthService, TokenUtils, MailService],
+    exports: [AuthService, TokenUtils, MailService, AuthGuard],
 })
 export class AuthModule {}

@@ -13,14 +13,14 @@ export default class TokenUtils {
             throw new Error('JWT_SECRET is not defined');
         }
         return jwt.sign({id}, secret, {
-            expiresIn: this.configService.get('JWT_EXPIRES_IN')
+            expiresIn: '1h'
         });
     }
     async createSendToken(user, req: Request, res: Response) {
         const token = await this.signToken(user.id)
         res.cookie('jwt', token, {
             httpOnly: true,
-            expires: new Date(Date.now() + this.configService.get('JWT_EXPIRES_IN')*24*60*60*1000),
+            expires: new Date(Date.now() + 1*24*60*60*1000),
             secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
         })
         user.password = undefined;

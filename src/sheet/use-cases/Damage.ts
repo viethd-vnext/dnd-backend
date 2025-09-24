@@ -1,7 +1,7 @@
 import { Injectable, Logger } from "@nestjs/common"
 import { ConfigService } from "@nestjs/config"
 import { InjectRepository } from "@nestjs/typeorm"
-import { Response } from "express"
+import { Request, Response } from "express"
 import { applyMixins } from "rxjs/internal/util/applyMixins"
 import { DamageDTO } from "src/dto/damage.dto"
 import { CharacterAffinity } from "src/entities/affinity.entity"
@@ -18,9 +18,16 @@ export default class DamageService {
         private readonly affinityRepository: Repository<CharacterAffinity>,
         private readonly configService: ConfigService
     ) {}
-    async execute(characterID: string, damageData: DamageDTO, res: Response) {
+    async execute(characterID: string, damageData: DamageDTO, req: Request, res: Response) {
         try {
-            const sheet = await this.sheetRepository.findOne({where: {id: characterID}})
+            const userID = req.user?.id
+            const sheet = await this.sheetRepository.findOne(
+                {where: 
+                    {
+                        id: characterID,
+                        userID: userID
+        
+                    }})
             if (!sheet) {
                 this.logger.error('Sheet not found')
                 return res.status(Number(this.configService.get<number>('STATUS_BAD_REQUEST'))).json({

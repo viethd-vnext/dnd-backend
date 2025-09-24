@@ -1,31 +1,31 @@
 import { IsOptional, IsString, IsNumber, IsBoolean, Min, Max } from 'class-validator';
+import { User } from 'src/entities/user.entity';
 
 export class CreateCharacterSheetDTO {
-	@IsOptional()
-	@IsString()
-	userID?: string;
 
 	@IsString()
-	characterName: string;
-
+	characterName: string
+	
 	@IsNumber()
 	@Min(1)
 	@Max(30)
-	armorClass: number;
+	armorClass: number
 
 	@IsString()
-	characterClass: string;
+	characterClass: string
 	
 	@IsNumber()
-	hp: number;
+	hp: number
 
 	@IsNumber()
-	tempHP: number;
+	maxHP: number
+	@IsNumber()
+	tempHP: number
 
 	@IsString()
-	background: string;
+	background: string
 
 	@IsOptional()
 	@IsBoolean()
-	active?: boolean;
+	active?: boolean
 }
