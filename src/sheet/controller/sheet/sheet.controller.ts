@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Req, Res, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import { AuthGuard } from 'src/auth/guard/auth/auth.guard';
 import { DamageDTO } from 'src/dto/damage.dto';
@@ -24,6 +24,7 @@ export class SheetController {
         return result
     }
     @Post()
+    @UsePipes(new ValidationPipe({forbidNonWhitelisted: true, transform: true}))
     @UseGuards(AuthGuard)
     async createSheet(@Body() sheetData: CreateCharacterSheetDTO, @Req() req: Request, @Res() res: Response) {
         const result = await this.sheetService.createSheet(sheetData, req, res);
@@ -31,6 +32,7 @@ export class SheetController {
     }
     @Post('damage/:id')
     @UseGuards(AuthGuard)
+    @UsePipes(new ValidationPipe({forbidNonWhitelisted: true, transform: true}))
     async damage(@Param('id') characterID: string, @Req() req: Request, @Body() damageData:DamageDTO, @Res() res: Response) {
         const result = this.sheetService.damage(characterID, damageData, req, res)
         return result
@@ -48,6 +50,7 @@ export class SheetController {
         return result
     }
     @Patch(':id')
+    @UsePipes(new ValidationPipe({forbidNonWhitelisted: true, transform: true}))
     @UseGuards(AuthGuard)
     async modifySheet(@Param('id') characterID: string,@Body() updateData: SheetUpdateDTO, @Req() req: Request, @Res() res: Response) {
         const result = this.sheetService.modifySheet(characterID, updateData, req, res)
