@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
-import { UserDTO } from 'src/dto/user.dto';
-import { UserUpdateDTO } from 'src/dto/login.dto';
+import { UserDTO } from 'src/users/dto/user.dto';
+import { UserUpdateDTO } from 'src/auth/dto/login.dto';
 import { UsersService } from 'src/users/services/users/users.service';
 import { UserGuard } from 'src/users/guard/user/user.guard';
 

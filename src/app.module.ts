@@ -3,14 +3,11 @@ import { UsersModule } from './users/module/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersController } from './users/controller/users/users.controller';
-import { UsersService } from './users/services/users/users.service';
 import { AuthModule } from './auth/module/auth/auth.module';
 import { AuthController } from './auth/controller/auth/auth.controller';
-import { AuthService } from './auth/services/auth/auth.service';
 import { MailService } from './auth/services/mail/mail.service';
 import { SheetModule } from './sheet/module/sheet/sheet.module';
 import { SheetController } from './sheet/controller/sheet/sheet.controller';
-import { SheetService } from './sheet/services/sheet/sheet.service';
 @Module({
   imports: [
     ConfigModule.forRoot({

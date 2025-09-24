@@ -2,7 +2,7 @@ import { Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Request, Response } from "express";
-import { User } from "src/entities/user.entity";
+import { User } from "src/users/entities/user.entity";
 import { Repository } from "typeorm";
 import { MailService } from "../services/mail/mail.service";
 

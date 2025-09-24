@@ -1,7 +1,7 @@
 import { Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { InjectRepository } from "@nestjs/typeorm";
-import { User } from "src/entities/user.entity";
+import { User } from "src/users/entities/user.entity";
 import { MoreThan, Repository } from "typeorm";
 import { Request, Response } from "express";
 import * as crypto from 'crypto'

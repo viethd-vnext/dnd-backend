@@ -2,8 +2,8 @@ import { Injectable, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Request, Response } from "express";
-import { SheetUpdateDTO } from "src/dto/sheetUpdate.dto";
-import { CharacterSheet } from "src/entities/sheet.entity";
+import { SheetUpdateDTO } from "src/sheet/dto/sheetUpdate.dto";
+import { CharacterSheet } from "../entities/sheet.entity";
 import { Repository } from "typeorm";
 
 @Injectable()

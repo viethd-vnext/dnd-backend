@@ -2,8 +2,8 @@ import { Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Request, Response } from "express";
-import { UserDTO } from "src/dto/user.dto";
-import { User } from "src/entities/user.entity";
+import { UserDTO } from "src/users/dto/user.dto";
+import { User } from "src/users/entities/user.entity";
 import TokenUtils from "src/utils/TokenUtils";
 import { Repository } from "typeorm";
 

@@ -5,8 +5,8 @@ import LoginUserService from 'src/auth/use-case/LoginService';
 import LogoutUserService from 'src/auth/use-case/LogoutService';
 import RegisterUserService from 'src/auth/use-case/RegisterService';
 import ResetPasswordService from 'src/auth/use-case/ResetPasswordService';
-import { UserDTO } from 'src/dto/user.dto';
-import IAuthService from 'src/interfaces/IAuthService';
+import { UserDTO } from 'src/users/dto/user.dto';
+import IAuthService from 'src/auth/interfaces/IAuthService';
 
 @Injectable()
 export class AuthService implements IAuthService {

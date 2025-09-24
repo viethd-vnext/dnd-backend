@@ -2,10 +2,10 @@ import { Inject, Injectable, Logger } from "@nestjs/common"
 import { ConfigService } from "@nestjs/config"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Request, Response } from "express"
-import { CreateCharacterSheetDTO } from "src/dto/sheet.dto"
-import { CharacterAffinity } from "src/entities/affinity.entity"
-import { CharacterSheet } from "src/entities/sheet.entity"
-import { User } from "src/entities/user.entity"
+import { CreateCharacterSheetDTO } from "src/sheet/dto/sheet.dto"
+import { CharacterAffinity } from "src/sheet/entities/affinity.entity"
+import { CharacterSheet } from "../entities/sheet.entity";
+import { User } from "src/users/entities/user.entity"
 import { Repository } from "typeorm"
 
 @Injectable()

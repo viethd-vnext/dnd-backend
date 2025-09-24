@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { UserDTO } from 'src/dto/user.dto';
-import { UserUpdateDTO } from 'src/dto/login.dto';
-import IUsersService from 'src/interfaces/IUsersService';
+import { UserDTO } from 'src/users/dto/user.dto';
+import { UserUpdateDTO } from 'src/auth/dto/login.dto';
+import IUsersService from 'src/users/interfaces/IUsersService';
 import CreateUserService from 'src/users/use-cases/CreateUser';
 import DeleteUserService from 'src/users/use-cases/DeleteUser';
 import GetAllUsersService from 'src/users/use-cases/GetAllUsers';

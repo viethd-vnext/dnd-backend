@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Req, Res, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import { AuthGuard } from 'src/auth/guard/auth/auth.guard';
-import { DamageDTO } from 'src/dto/damage.dto';
-import { CreateCharacterSheetDTO } from 'src/dto/sheet.dto';
-import { SheetUpdateDTO } from 'src/dto/sheetUpdate.dto';
+import { DamageDTO } from 'src/sheet/dto/damage.dto';
+import { CreateCharacterSheetDTO } from 'src/sheet/dto/sheet.dto';
+import { SheetUpdateDTO } from 'src/sheet/dto/sheetUpdate.dto';
 import { SheetService } from 'src/sheet/services/sheet/sheet.service';
 
 @Controller('sheet')

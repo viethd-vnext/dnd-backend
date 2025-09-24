@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CharacterAffinity } from 'src/entities/affinity.entity';
-import { CharacterSheet } from 'src/entities/sheet.entity';
-import { User } from 'src/entities/user.entity';
+import { CharacterAffinity } from 'src/sheet/entities/affinity.entity';
+import { CharacterSheet } from 'src/sheet/entities/sheet.entity';
+import { User } from 'src/users/entities/user.entity';
 import { SheetService } from 'src/sheet/services/sheet/sheet.service';
 import AddTempHPService from 'src/sheet/use-cases/AddTempHP';
 import CreateSheetService from 'src/sheet/use-cases/CreateSheet';

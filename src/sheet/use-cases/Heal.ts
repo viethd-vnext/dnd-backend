@@ -2,7 +2,7 @@ import { Injectable, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Request, Response } from "express";
-import { CharacterSheet } from "src/entities/sheet.entity";
+import { CharacterSheet } from "../entities/sheet.entity";
 import { Repository } from "typeorm";
 
 @Injectable()

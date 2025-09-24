@@ -1,5 +1,5 @@
 import { IsOptional, IsString, IsNumber, IsBoolean, Min, Max } from 'class-validator';
-import { User } from 'src/entities/user.entity';
+import { User } from 'src/users/entities/user.entity';
 
 export class CreateCharacterSheetDTO {
 

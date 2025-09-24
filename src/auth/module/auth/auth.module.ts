@@ -10,7 +10,7 @@ import LoginUserService from 'src/auth/use-case/LoginService';
 import LogoutUserService from 'src/auth/use-case/LogoutService';
 import RegisterUserService from 'src/auth/use-case/RegisterService';
 import ResetPasswordService from 'src/auth/use-case/ResetPasswordService';
-import { User } from 'src/entities/user.entity';
+import { User } from 'src/users/entities/user.entity';
 import TokenUtils from 'src/utils/TokenUtils';
 
 @Module({

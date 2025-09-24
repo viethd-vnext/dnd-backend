@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { DamageDTO } from 'src/dto/damage.dto';
-import { CreateCharacterSheetDTO } from 'src/dto/sheet.dto';
-import { SheetUpdateDTO } from 'src/dto/sheetUpdate.dto';
-import ISheetService from 'src/interfaces/ISheetService';
+import { DamageDTO } from 'src/sheet/dto/damage.dto';
+import { CreateCharacterSheetDTO } from 'src/sheet/dto/sheet.dto';
+import { SheetUpdateDTO } from 'src/sheet/dto/sheetUpdate.dto';
+import ISheetService from 'src/sheet/interfaces/ISheetService';
 import AddTempHPService from 'src/sheet/use-cases/AddTempHP';
 import CreateSheetService from 'src/sheet/use-cases/CreateSheet';
 import DamageService from 'src/sheet/use-cases/Damage';

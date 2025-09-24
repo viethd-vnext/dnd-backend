@@ -3,9 +3,9 @@ import { ConfigService } from "@nestjs/config"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Request, Response } from "express"
 import { applyMixins } from "rxjs/internal/util/applyMixins"
-import { DamageDTO } from "src/dto/damage.dto"
-import { CharacterAffinity } from "src/entities/affinity.entity"
-import { CharacterSheet } from "src/entities/sheet.entity"
+import { DamageDTO } from "src/sheet/dto/damage.dto"
+import { CharacterAffinity } from "src/sheet/entities/affinity.entity"
+import { CharacterSheet } from "../entities/sheet.entity";
 import { Repository } from "typeorm"
 
 @Injectable()

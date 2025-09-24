@@ -1,7 +1,7 @@
 import { Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { UserUpdateDTO } from "src/dto/login.dto";
-import { User } from "src/entities/user.entity";
+import { UserUpdateDTO } from "src/auth/dto/login.dto";
+import { User } from "src/users/entities/user.entity";
 import { Repository } from "typeorm";
 
 export default class UpdateUserService {
