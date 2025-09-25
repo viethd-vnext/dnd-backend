@@ -1,6 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { UserDTO } from 'src/users/dto/user.dto';
-import { UserUpdateDTO } from 'src/auth/dto/login.dto';
 import { UsersService } from 'src/users/services/users/users.service';
 import { UserGuard } from 'src/users/guard/user/user.guard';
 
@@ -29,7 +28,7 @@ export class UsersController {
     }
     @UseGuards(UserGuard)
     @Patch(":id")
-    async updateUser(@Param("id") id:string, @Body() patchData: UserUpdateDTO) {
+    async updateUser(@Param("id") id:string, @Body() patchData: any) {
         return await this.userServices.updateUser(id, patchData)
     }
     @UseGuards(UserGuard)

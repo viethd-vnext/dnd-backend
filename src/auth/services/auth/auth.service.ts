@@ -7,6 +7,7 @@ import RegisterUserService from 'src/auth/use-case/RegisterService';
 import ResetPasswordService from 'src/auth/use-case/ResetPasswordService';
 import { UserDTO } from 'src/users/dto/user.dto';
 import IAuthService from 'src/auth/interfaces/IAuthService';
+import { LoginDTO } from 'src/auth/dto/login.dto';
 
 @Injectable()
 export class AuthService implements IAuthService {
@@ -29,7 +30,7 @@ export class AuthService implements IAuthService {
             throw error
         }
     }
-    async login(loginData: any, req: Request, res: Response): Promise<any> {
+    async login(loginData: LoginDTO, req: Request, res: Response): Promise<any> {
         try {
             this.logger.debug("Logging in.")
             const result = await this.loginService.execute(loginData, req, res)

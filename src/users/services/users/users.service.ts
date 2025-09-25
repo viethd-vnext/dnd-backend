@@ -1,6 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { UserDTO } from 'src/users/dto/user.dto';
-import { UserUpdateDTO } from 'src/auth/dto/login.dto';
 import IUsersService from 'src/users/interfaces/IUsersService';
 import CreateUserService from 'src/users/use-cases/CreateUser';
 import DeleteUserService from 'src/users/use-cases/DeleteUser';
@@ -44,7 +43,7 @@ export class UsersService implements IUsersService  {
             throw error;
         }
     }
-    async updateUser(id:string, patchData: UserUpdateDTO): Promise<void> {
+    async updateUser(id:string, patchData: any): Promise<void> {
         try {
             this.logger.debug("Deleting user.")
             await this.updateUserByIDService.execute(id, patchData)

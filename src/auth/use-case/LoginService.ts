@@ -7,6 +7,7 @@ import { UserDTO } from "src/users/dto/user.dto"
 import { User } from "src/users/entities/user.entity"
 import TokenUtils from "src/utils/TokenUtils"
 import { Repository } from "typeorm"
+import { LoginDTO } from "../dto/login.dto"
 
 export default class LoginUserService {
     private readonly logger = new Logger(LoginUserService.name)
@@ -16,7 +17,7 @@ export default class LoginUserService {
         private readonly configService: ConfigService,
         private readonly tokenUtils: TokenUtils
     ) {}
-    async execute(loginData: UserDTO, req: Request, res: Response) {
+    async execute(loginData: LoginDTO, req: Request, res: Response) {
         this.logger.debug("Finding existing user.")
         const {email, password} = loginData
         if (!email || !password) {

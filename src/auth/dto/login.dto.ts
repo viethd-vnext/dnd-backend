@@ -1,12 +1,14 @@
-import { IsString, IsEmail, Min, Max } from "class-validator";
+import { IsString, IsEmail, IsNotEmpty, MinLength, MaxLength } from "class-validator";
 
-export class UserUpdateDTO {
-
-    @IsEmail({}, { message: 'Invalid slug' })
+export class LoginDTO {
+    @IsNotEmpty({message: "Missing email"})
+    @IsString()
+    @IsEmail({}, { message: 'Invalid email' })
     email: string;
 
+    @IsNotEmpty({message: "Missing password"})
     @IsString()
-    @Min(8, { message: 'Minimum 8 characters' })
-    @Max(40, { message: 'Maximum 40 characters' })
+    @MinLength(8, { message: 'Minimum 8 characters' })
+    @MaxLength(40, { message: 'Maximum 40 characters' })
     password: string;
 }

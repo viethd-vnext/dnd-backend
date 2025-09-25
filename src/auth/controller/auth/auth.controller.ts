@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Param, Post, Req, Res, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import type { Request, Response } from 'express';
+import { LoginDTO } from 'src/auth/dto/login.dto';
 import { AuthService } from 'src/auth/services/auth/auth.service';
 import { UserDTO } from 'src/users/dto/user.dto';
 @Controller('auth')
@@ -9,7 +10,7 @@ export class AuthController {
     ) {}
     @UsePipes(new ValidationPipe({forbidNonWhitelisted: true, transform: true}))
     @Post("login")
-    async login(@Body() loginData: any, @Req() req: Request, @Res() res: Response) {
+    async login(@Body() loginData: LoginDTO, @Req() req: Request, @Res() res: Response) {
         const result = await this.authServices.login(loginData, req, res)
         return result
     }
