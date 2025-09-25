@@ -14,6 +14,7 @@ import GetOwnedSheetService from 'src/sheet/use-cases/GetOwnedSheets';
 import GetSheetByIDService from 'src/sheet/use-cases/GetSheetByID';
 import HealService from 'src/sheet/use-cases/Heal';
 import ModifySheetService from 'src/sheet/use-cases/ModifySheet';
+import ChangeAffinityService from 'src/sheet/use-cases/ChangeAffinity';
 
 @Module({
     imports: [TypeOrmModule.forFeature([User, CharacterSheet, CharacterAffinity]), ConfigModule.forRoot({ isGlobal: true })],
@@ -27,7 +28,8 @@ import ModifySheetService from 'src/sheet/use-cases/ModifySheet';
         DamageService,
         GetOwnedSheetService,
         HealService,
-        AddTempHPService
+        AddTempHPService,
+        ChangeAffinityService
     ],
     exports: [SheetService],
 })

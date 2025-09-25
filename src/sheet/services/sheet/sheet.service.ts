@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Request, Response } from 'express';
+import { AffinityDTO } from 'src/sheet/dto/affinity.dto';
 import { DamageDTO } from 'src/sheet/dto/damage.dto';
 import { CreateCharacterSheetDTO } from 'src/sheet/dto/sheet.dto';
 import { SheetUpdateDTO } from 'src/sheet/dto/sheetUpdate.dto';
 import ISheetService from 'src/sheet/interfaces/ISheetService';
 import AddTempHPService from 'src/sheet/use-cases/AddTempHP';
+import ChangeAffinityService from 'src/sheet/use-cases/ChangeAffinity';
 import CreateSheetService from 'src/sheet/use-cases/CreateSheet';
 import DamageService from 'src/sheet/use-cases/Damage';
 import DeleteSheetService from 'src/sheet/use-cases/DeleteSheet';
@@ -25,7 +27,8 @@ export class SheetService implements ISheetService {
         private readonly damageService: DamageService,
         private readonly getOwnedSheetService: GetOwnedSheetService,
         private readonly healService: HealService,
-        private readonly addTempHPService: AddTempHPService
+        private readonly addTempHPService: AddTempHPService,
+        private readonly changeAffinityService: ChangeAffinityService
     ) {}
     async getOwnedSheet(req: Request ,res: Response): Promise<any> {
         try {
@@ -94,6 +97,14 @@ export class SheetService implements ISheetService {
     async addTempHP(characterID: string, healData: any, req: Request, res: Response): Promise<any> {
         try {
             const result = await this.addTempHPService.execute(characterID, healData, req, res)
+            return result
+        } catch (error) {
+            throw error
+        }
+    }
+    async changeAffinity(characterID: string, affinityData: AffinityDTO, req: Request, res: Response): Promise<any>  {
+        try {
+            const result = await this.changeAffinityService.execute(characterID, affinityData,req,res)
             return result
         } catch (error) {
             throw error

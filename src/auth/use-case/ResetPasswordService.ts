@@ -4,7 +4,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "src/users/entities/user.entity";
 import { MoreThan, Repository } from "typeorm";
 import { Request, Response } from "express";
-import * as crypto from 'crypto'
+import * as crypto from 'crypto';
 import TokenUtils from "src/utils/TokenUtils";
 export default class ResetPasswordService {
     private readonly logger = new Logger(ResetPasswordService.name)

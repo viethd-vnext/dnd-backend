@@ -20,9 +20,6 @@ export default class LoginUserService {
     async execute(loginData: LoginDTO, req: Request, res: Response) {
         this.logger.debug("Finding existing user.")
         const {email, password} = loginData
-        if (!email || !password) {
-            return res.status(Number(this.configService.get("STATUS_BAD_REQUEST")) || 400).json({message: "Missing required fields."})
-        }
         const user = await this.userRepository.findOne({
             where: {email},
             select: ['id','email','password']

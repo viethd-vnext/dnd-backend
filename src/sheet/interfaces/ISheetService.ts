@@ -8,5 +8,5 @@ export default interface ISheetService {
     damage(characterID, damageData, req, res):Promise<any>
     heal(characterID, healData, req, res):Promise<any>
     addTempHP(characterID, healData, req, res): Promise<any>
-
+    changeAffinity(characterID, affinityData, req, res): Promise<any>
 }

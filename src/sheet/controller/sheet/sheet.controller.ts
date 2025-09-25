@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Req, Res, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import { AuthGuard } from 'src/auth/guard/auth/auth.guard';
+import { AffinityDTO } from 'src/sheet/dto/affinity.dto';
 import { DamageDTO } from 'src/sheet/dto/damage.dto';
 import { CreateCharacterSheetDTO } from 'src/sheet/dto/sheet.dto';
 import { SheetUpdateDTO } from 'src/sheet/dto/sheetUpdate.dto';
@@ -30,24 +31,29 @@ export class SheetController {
         const result = await this.sheetService.createSheet(sheetData, req, res);
         return result;
     }
-    @Post('damage/:id')
+    @Patch('damage/:id')
     @UseGuards(AuthGuard)
     @UsePipes(new ValidationPipe({forbidNonWhitelisted: true, transform: true}))
     async damage(@Param('id') characterID: string, @Req() req: Request, @Body() damageData:DamageDTO, @Res() res: Response) {
         const result = this.sheetService.damage(characterID, damageData, req, res)
         return result
     }
-    @Post('heal/:id')
+    @Patch('heal/:id')
     @UseGuards(AuthGuard)
     async heal(@Param('id') characterID: string, @Body() healData: any, @Req() req: Request, @Res() res: Response) {
         const result = this.sheetService.heal(characterID, healData, req, res)
         return result
     }
-    @Post('add-temp-hp/:id')
+    @Patch('add-temp-hp/:id')
     @UseGuards(AuthGuard)
     async addTempHP(@Param('id') characterID: string, @Body() healData: any, @Req() req: Request, @Res() res: Response) {
         const result = this.sheetService.addTempHP(characterID, healData, req, res)
         return result
+    }
+    @Patch('affinity/:id')
+    @UseGuards(AuthGuard)
+    async changeAffinity(@Param('id') characterID: string, @Body() affinityData: AffinityDTO, @Req() req: Request, @Res() res: Response) {
+        const result= this.sheetService.changeAffinity(characterID, affinityData, req, res)
     }
     @Patch(':id')
     @UsePipes(new ValidationPipe({forbidNonWhitelisted: true, transform: true}))
